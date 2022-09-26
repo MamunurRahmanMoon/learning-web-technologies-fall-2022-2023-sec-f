@@ -1,0 +1,17 @@
+<brands>
+	<brand>
+		<name id='11' status='1'>Samsung</name>
+		<unitprice>35000</unitprice>
+		<stock>50</stock>
+	</brand>
+	<brand>
+		<name id='20' status='0'>HTC</name>
+		<unitprice>63500</unitprice>
+		<stock>35</stock>
+	</brand>
+	<brand>
+		<name id='23' status='1'>Nokia</name>
+		<unitprice>25100</unitprice>
+		<stock>100</stock>
+	</brand>
+</brands>
