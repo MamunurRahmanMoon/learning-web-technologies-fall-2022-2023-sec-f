@@ -1,8 +1,4 @@
 <?php
-    // $Name = $_POST['name'];
-    // $buyinPrice= $_POST['buyingPrice'];
-    // $sellingPrice = $_POST['sellingPrice'];
-    // $display = $_POST['display'];
 
    $con = mysqli_connect('localhost', 'root', '', 'product_db');
 
@@ -23,19 +19,19 @@
                     <th>Name</th>
                     <th>Buying Price</th>
                     <th>Selling Price</th>
-                    <th>Display</th>
                 </tr>
         ";
     while($data = mysqli_fetch_assoc($result)){
-        echo "  
+        if($data['Display'] == 1){
+            echo "  
                 <tr>
                     <td>{$data['ID']}</td>
                     <td>{$data['Name']}</td>
                     <td>{$data['Buying Price']}</td>
                     <td>{$data['Selling Price']}</td>
-                    <td>{$data['Display']}</td>
                 </tr>
                 ";
+        }
     }
     echo "</table>
             </br>";
@@ -49,7 +45,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="indexCheck.php">
+    <form method="POST" action="productsCheck.php">
         <fieldset>
             <legend>Add Product</legend>
             <table>
@@ -75,7 +71,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" name="display" id="">Display
+                        <input type="checkbox" name="display" value="1" id="">Display
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Save">
                     </td>
                 </tr>
             </table>
