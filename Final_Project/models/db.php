@@ -1,8 +1,9 @@
 <?php
 $host = "localhost";
-$dbname = "charity_management";
 $dbuser = "root";
 $dbpass = "";
+$dbname = "charity_management";
+
 
     function getConnection(){
        global $host;
@@ -10,7 +11,7 @@ $dbpass = "";
        global $dbuser;
        global $dbpass;
        
-       return $con = mysqli_connect($host, $dbname, $dbuser, $dbpass);
+       return $con = mysqli_connect($host,$dbuser, $dbpass, $dbname);
     }
 
     
