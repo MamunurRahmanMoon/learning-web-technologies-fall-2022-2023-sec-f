@@ -37,7 +37,7 @@
 <body>
     <div class='adminLogIn'>
         <div>
-            <form name="adminForm" onsubmit="return validateForm();" action="../controllers/adminProfileCheck.php" method="POST">
+            <form name="adminForm"  action="../controllers/adminProfileCheck.php" method="POST">
                     <fieldset>
                         <legend>Admin Profile</legend>
                         <div>
@@ -56,6 +56,7 @@
 
                                         $_SESSION['adminIdSession'] = $data['ID'];
                                         $adminIdSession = $_SESSION['adminIdSession'];
+                                        // echo $adminIdSession;
                                         ?>
                                      </td>
                                 </tr>

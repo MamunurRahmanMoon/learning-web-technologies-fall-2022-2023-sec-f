@@ -37,10 +37,12 @@ require_once('db.php');
         return $result;
     }
 
-    function updateUserInfo($userId, $username, $userPassword){
+    function updateUserInfo($userProfile){
         $con = getConnection();
-        $sql = "update admins set username='$username', password='$userPassword' where ID = '$userId'";
-        $sql = "UPDATE `admins` SET `username`='$username',`password`='$userPassword' WHERE `ID`='$userId'";
+
+        $sql = "UPDATE `admins` SET `username`= '{$userProfile['username']}', `password`='{$userProfile['password']}' WHERE `ID`='{$userProfile['ID']}'";
+        // $sql = "UPDATE `admins` SET `username`= '{$userProfile['username']}', `password`= '{$userProfile['password']}' WHERE `ID`='{$userProfile['ID']}'";
+
         $result = mysqli_query($con, $sql);
 
         if($result){
@@ -50,8 +52,6 @@ require_once('db.php');
             return false;
         }
     }
-
-
 
 
     function updateUserImg($img_name,$username){
@@ -76,4 +76,14 @@ require_once('db.php');
         $user = mysqli_fetch_assoc($result);
         return $user;
     }
+
+    function searchUserByName($key){
+        $con = getConnection();
+        $query = "SELECT * from admins where username like '%$key%'";
+        $result = mysqli_query($con, $query);
+
+        // $user = mysqli_fetch_assoc($result);
+        return $result;
+    }
+    
 ?>

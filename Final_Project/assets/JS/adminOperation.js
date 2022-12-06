@@ -10,8 +10,8 @@ function ajax(){
         if(this.readyState == 4 && this.status == 200){
             //alert(this.responseText);
             // document.getElementById('searchResult').innerHTML = this.responseText;
-            $searchedText = this.responseText;
             
+            $searchedText = this.responseText;
         }
         
     }

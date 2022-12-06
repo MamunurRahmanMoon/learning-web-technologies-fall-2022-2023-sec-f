@@ -1,4 +1,6 @@
 <?php
+
+
     if(isset($_POST['upload_image_btn'])){
         
         session_start();
@@ -22,13 +24,19 @@
     }
 
     if(isset($_POST['update_adminProfile'])){
+
+        session_start();
         $adminProfileUsername = $_POST['adminProfileUsername'];
+
         $adminProfilePassword = $_POST['adminProfilePassword'];
+
         $adminIdSession = $_SESSION['adminIdSession'];
+
+        $userEdit = ['username' => $adminProfileUsername, 'password' => $adminProfilePassword, 'ID' => $adminIdSession];
 
         require_once('../models/adminModel.php');
 
-        $status = updateUserInfo($adminIdSession, $adminProfileUsername, $adminProfilePassword);
+        $status = updateUserInfo($userEdit);
 
         if($status){
             header("location: ../views/adminLogIn.php?err=infoSuccess");
