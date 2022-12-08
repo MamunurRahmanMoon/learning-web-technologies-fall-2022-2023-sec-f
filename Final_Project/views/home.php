@@ -4,45 +4,49 @@
     //     header('location: login.php?err=bad_request');
     // }
 ?>
-<html lang="en">
 
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
 
 <body>
     <center>
-        <header>
-           
-            <h1>Welcom to True-Help</h1>
+    <header>
+        
+        <h1>Welcom to True-Help</h1>
 
-        </header>
-            <main>
-            <table>
-                <tr>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <td>
+                    <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
+                </td>
+                <td>
+                    <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
+                </td>
+            </tr>
+            <tr>
                     <td>
                         <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
                     </td>
+                    
                     <td>
                         <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
                     </td>
-                </tr>
-                <tr>
-                        <td>
-                            <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
-                        </td>
-                        
-                        <td>
-                            <img height="100px" src="Images/Mother and child at hospital.jpg" alt="">
-                        </td>
-                </tr>
-            </table>
+            </tr>
+        </table>
 
-            <h1>Help People Who Actually Needs</h1>
-            <h3>------- <a href="login.php">Log-In</a> | <a href="signup.php">Sign-Up</a> ---------</h3>
-            </main>
+        <h1>Help People Who Actually Needs</h1>
+        <h3>------- <a href="login.php">Log-In</a> | <a href="signup.php">Sign-Up</a> ---------</h3>
+    </main>
     </center>
-    
     
     <footer>
 

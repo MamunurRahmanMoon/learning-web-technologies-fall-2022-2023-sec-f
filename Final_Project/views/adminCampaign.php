@@ -73,30 +73,35 @@
                 <div class="display-area">
                     <input name="adminSearchName" type="text" id="searchAdmin">
                     <input type="button" value="Search" id="btn-search" onclick="ajax()">
-                    <div>
-                        <?php
-                            
-                            require_once('../models/adminModel.php');
-                            echo "  <table border='1'>
-                            <tr>
-                                <th>ID</th>
-                                <th>Admin Username</th>
-                            </tr>";
-                            $result  = displayUser();
-                            // $count = mysqli_num_rows($result);
+                <div>
+                    <?php
+                        
+                        require_once('../models/adminModel.php');
+                        echo "  <table border='1'>
+                        <tr>
+                            <th>ID</th>
+                            <th>Admin Username</th>
+                        </tr>";
+                        $result  = displayUSer();
+                        // $count = mysqli_num_rows($result);
 
-                            while($data = mysqli_fetch_assoc($result)){
-                                        echo "  
-                                            <tr>
-                                                <td>{$data['ID']}</td>
-                                                <td>{$data['username']}</td>
-                                            </tr>
-                                            ";
-                                }
-                                echo "</table>
-                                        </br>";
-                            ?>
+                        while($data = mysqli_fetch_assoc($result)){
+                                    echo "  
+                                        <tr>
+                                            <td>{$data['ID']}</td>
+                                            <td>{$data['username']}</td>
+                                        </tr>
+                                        ";
+                            }
+                            echo "</table>
+                                    </br>";
+                        ?>
                     </div>
+                    <table>
+                        <tr>
+                            <td> <h2 id="searchResult"></h2> </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

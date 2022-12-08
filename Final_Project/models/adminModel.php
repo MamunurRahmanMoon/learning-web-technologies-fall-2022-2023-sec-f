@@ -17,7 +17,7 @@ require_once('db.php');
         }
     }
 
-    function displayUSer(){
+    function displayUser(){
         $con = getConnection();
         $sql = "select * from admins";
 

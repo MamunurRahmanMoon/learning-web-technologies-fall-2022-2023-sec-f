@@ -3,6 +3,7 @@ body{
     margin: 0;
     font-size: 25px;
 }
+
 .main-container{
      padding: 10px;
 }
@@ -47,7 +48,7 @@ body{
 }
 
 .display-area{
-    background-color: bisque;
+    background-color: rgb(112, 135, 165);
     width: 79%;
     height: 500px;
     padding: 10px;
@@ -74,3 +75,33 @@ body{
     background-color: blueviolet;
     text-decoration: none;
 }
+.logout-btn{
+    display: block;
+    text-align: center;
+    line-height: 90px;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 5px;
+    color: aliceblue;
+}
+
+/* Table CSS Start */
+.table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.table td, .table th{
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.table th{
+    color: azure;
+    background-color: rgb(71, 18, 120);
+}
+.table tbody tr:nth-child(even){
+    background-color: antiquewhite;
+}
+  /* Table CSS End */
