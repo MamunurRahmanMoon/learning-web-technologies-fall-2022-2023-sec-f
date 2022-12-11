@@ -4,6 +4,33 @@
     if(!isset($_COOKIE['adminStatus'])){
         header("location: adminLogIn.php?err=bad_request");
     }
+
+    if(isset($_GET['err'])){
+        if($_GET['err'] == 'donorDelFailed'){
+            echo "<div style='color: orange; height:50px; margin: 0 auto; text-align: center; background-color: aquamarine; display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;'>
+                Donor Delete Failed!
+            </div>";
+        }
+        if($_GET['err'] == 'imageSuccess'){
+            echo "<div style='color: orange; height:50px; margin: 0 auto; text-align: center; background-color: aquamarine; display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;'>
+                Image upload success!
+            </div>";
+        }
+        if($_GET['err'] == 'imageFailed'){
+            echo "<div style='color: orange; height:50px; margin: 0 auto; text-align: center; background-color: aquamarine; display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;'>
+                Image upload failed!
+            </div>";
+        }
+    }
     
 ?>
 <!DOCTYPE html>
@@ -18,7 +45,7 @@
 </head>
 
 <body>
-    <form method="post" action="adminCheck.php">
+    <form method="post" action="../controllers/adminCheck.php">
         <div class="main-container">
             <div class="menubar">
                 <div class="left-menu-element">
@@ -57,7 +84,7 @@
                     <a href="admin.php" class="bar-element">
                         <b> Admins</b>
                     </a>
-                    <a href="adminDonor.php" class="bar-element">
+                    <a href="adminDonor.php" class="bar-element" style="background-color: rgb(71, 18, 120);">
                         <b>Donors</b>
                     </a>
                     <a href="adminRequester.php" class="bar-element">
@@ -77,7 +104,7 @@
                         <input type="button" value="Search" id="btn-search" onclick="ajax()">
                     </div>
                    
-                    <div class="table">
+                    <div class="table-container">
                         <!-- Table start -->
                         <div>
                             <table class='table'>
@@ -91,6 +118,7 @@
                                     <th>Email</th>
                                     <th>Action</th>
                                 </thead>
+                                
                                 <tbody>
                                 <?php
                                     require_once('../models/donorModel.php');
@@ -106,6 +134,11 @@
                                         <td><?= $data['city']?></td>
                                         <td><?= $data['phone']?></td>
                                         <td><?= $data['email']?></td>
+                                        <td>
+                                            <a name="update-btn" class="action_btn update-btn" href="editAdminDonor.php?donorID=<?= base64_encode($data['ID'])?>">Update</a>
+                            
+                                            <a name="delete-donor-btn" class="delete-btn confirmation" href="../controllers/deleteUser.php?donorID=<?= base64_encode($data['ID'])?>">Delete</a>
+                                        </td>
                                     </tr>
 
                                     <?php 

@@ -17,7 +17,7 @@
         }
     }
 
-    function login($user){
+    function requesterLogin($user){
         $con = getConnection();
         $sql = "SELECT * FROM `requesters` where username='{$user['username']}' and password='{$user['password']}'";
 
@@ -26,6 +26,57 @@
         $count  = mysqli_num_rows($result);
 
         if($count > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function displayRequester(){
+        $con = getConnection();
+        $sql = "select * from requesters";
+
+        $result = mysqli_query($con, $sql);
+
+        return $result;
+    }
+
+    function deleteRequester($ID){
+        $con = getConnection();
+        $sql = "DELETE FROM `requesters` WHERE `ID` = '$ID'";
+
+        $result = mysqli_query($con
+        , $sql);
+
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function displayAdminRequesterProfile($ID){
+        $con = getConnection();
+        $sql = "SELECT * FROM `requesters` WHERE `ID` = '$ID'";
+
+        $result = mysqli_query($con, $sql);
+
+        // $user = mysqli_fetch_assoc($result);
+        
+        return $result;
+    }
+
+    function updateRequesterInfo($ID, $fullname, $username, $password, $district, $city, $phone, $email){
+        $con = getConnection();
+
+        $sql = "UPDATE `requesters` SET `fullname` = '$fullname', `username` = '$username', `password` = '$password', `district` = '$district', `city` = '$city', `phone` = '$phone', `email` = '$email' WHERE `ID` = '$ID'";
+        // $sql = "UPDATE `admins` SET `username`= '{$userProfile['username']}', `password`= '{$userProfile['password']}' WHERE `ID`='{$userProfile['ID']}'";
+
+        $result = mysqli_query($con, $sql);
+
+        if($result){
             return true;
         }
         else{

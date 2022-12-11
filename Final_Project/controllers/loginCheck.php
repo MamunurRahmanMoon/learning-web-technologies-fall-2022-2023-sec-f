@@ -46,7 +46,7 @@
             else if($role == 'Requester'){
                 require_once "../models/requesterModel.php";
                 $requester = ['username' => $username, 'password' => $password];
-                $status = login($requester);
+                $status = requesterLogin($requester);
 
                 if($status){
                     session_start();

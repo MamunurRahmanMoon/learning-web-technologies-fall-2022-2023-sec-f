@@ -30,4 +30,41 @@
             return false;
         }
     }
+
+    function displayVolunteer(){
+        $con = getConnection();
+        $sql = "SELECT * FROM `volunteers`";
+
+        $result = mysqli_query($con, $sql);
+
+        return $result;
+    }
+
+
+    function displayAdminVolunteerProfile($ID){
+        $con = getConnection();
+        $sql = "SELECT * FROM `volunteers` WHERE `ID` = '$ID'";
+
+        $result = mysqli_query($con, $sql);
+
+        // $user = mysqli_fetch_assoc($result);
+        
+        return $result;
+    }
+
+
+    function updateVolunteerInfo($ID, $fullname, $username, $password, $district, $city, $phone, $email){
+        $con = getConnection();
+
+        $sql = "UPDATE `volunteers` SET `fullname` = '$fullname', `username` = '$username', `password` = '$password',`district` = '$district', `city` = '$city', `phone` = '$phone', `email` = '$email' WHERE `ID` = '$ID'";
+
+        $result = mysqli_query($con, $sql);
+
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 ?>

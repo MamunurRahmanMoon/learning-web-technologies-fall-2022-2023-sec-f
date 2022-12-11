@@ -4,6 +4,17 @@
     if(!isset($_COOKIE['adminStatus'])){
         header("location: adminLogIn.php?err=bad_request");
     }
+
+    if(isset($_GET['err'])){
+        if($_GET['err'] == 'donorDelFailed'){
+            echo "<div style='color: orange; height:50px; margin: 0 auto; text-align: center; background-color: aquamarine; display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;'>
+                Donor Delete Failed!
+            </div>";
+        }
+    }
     
 ?>
 <!DOCTYPE html>
@@ -18,7 +29,7 @@
 </head>
 
 <body>
-    <form method="post" action="adminCheck.php">
+    <form method="post" action="../controllers/adminCheck.php">
         <div class="main-container">
             <div class="menubar">
                 <div class="left-menu-element">
@@ -60,7 +71,7 @@
                     <a href="adminDonor.php" class="bar-element">
                         <b>Donors</b>
                     </a>
-                    <a href="adminRequester.php" class="bar-element">
+                    <a href="adminRequester.php" class="bar-element" style="background-color: rgb(71, 18, 120);">
                         <b>Requesters</b>
                     </a>
                     <a href="adminVolunteer.php" class="bar-element">
@@ -70,40 +81,58 @@
                         <b>Campaigns</b>
                     </a>
                 </div>
-                <div class="display-area">
-                    <input name="adminSearchName" type="text" id="searchAdmin">
-                    <input type="button" value="Search" id="btn-search" onclick="ajax()">
-                <div>
-                    <?php
-                        
-                        require_once('../models/adminModel.php');
-                        echo "  <table border='1'>
-                        <tr>
-                            <th>ID</th>
-                            <th>Admin Username</th>
-                        </tr>";
-                        $result  = displayUSer();
-                        // $count = mysqli_num_rows($result);
 
-                        while($data = mysqli_fetch_assoc($result)){
-                                    echo "  
-                                        <tr>
-                                            <td>{$data['ID']}</td>
-                                            <td>{$data['username']}</td>
-                                        </tr>
-                                        ";
-                            }
-                            echo "</table>
-                                    </br>";
-                        ?>
+                <div class="display-area">
+                    <div>
+                        <input name="adminSearchName" type="text" id="searchAdmin">
+                        <input type="button" value="Search" id="btn-search" onclick="ajax()">
                     </div>
-                    <table>
-                        <tr>
-                            <td> <h2 id="searchResult"></h2> </td>
-                        </tr>
-                    </table>
+                   
+                    <div class="table-container">
+                        <!-- Table start -->
+                        <div>
+                            <table class='table'>
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Fullname</th>
+                                    <th>Username</th>
+                                    <th>District</th>
+                                    <th>City</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    require_once('../models/requesterModel.php');
+                                    $result = displayRequester();
+                                    while($data = mysqli_fetch_assoc($result)){
+                                ?>
+                                
+                                    <tr>
+                                        <td><?= $data['ID']?></td>
+                                        <td><?= $data['fullname']?></td>
+                                        <td><?= $data['username']?></td>
+                                        <td><?= $data['district']?></td>
+                                        <td><?= $data['city']?></td>
+                                        <td><?= $data['phone']?></td>
+                                        <td><?= $data['email']?></td>
+                                        <td>
+                                            <a name="update-btn" class="action_btn update-btn" href="editAdminRequester.php?requesterID=<?= base64_encode($data['ID'])?>">Update</a>
+                            
+                                            <a name="delete-donor-btn" class="delete-btn confirmation" href="../controllers/deleteUser.php?requesterID=<?= base64_encode($data['ID'])?>">Delete</a>
+                                        </td>
+                                    </tr>
+
+                                    <?php 
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Table End -->
+                    </div>
                 </div>
-            </div>
         </div>
     </form>
 
@@ -111,6 +140,6 @@
 </body>
 
 <footer>
-    <a href="../controllers/logout.php">Log-out</a>
+<a href="../controllers/logout.php">Log-out</a>
 </footer>
 </html>

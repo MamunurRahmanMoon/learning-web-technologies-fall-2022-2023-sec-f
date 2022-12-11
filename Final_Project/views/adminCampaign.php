@@ -66,7 +66,7 @@
                     <a href="adminVolunteer.php" class="bar-element">
                         <b>Volunteers</b>
                     </a>
-                    <a href="adminCampaign.php" class="bar-element">
+                    <a href="adminCampaign.php" class="bar-element" style="background-color: rgb(71, 18, 120);">
                         <b>Campaigns</b>
                     </a>
                 </div>
